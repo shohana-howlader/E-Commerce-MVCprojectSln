@@ -1,0 +1,44 @@
+﻿@model MVCproject.Models.Product
+
+@{
+    ViewBag.Title = "Add to Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">Add to Cart</h2>
+
+    <div class="row">
+        <!-- Product Image Column -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <img src="~/Uploads/@Model.Image" class="img-fluid" alt="@Model.Name" style="height: 400px; object-fit: cover;" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Details Column -->
+        <div class="col-md-6">
+            @using (Html.BeginForm())
+            {
+                <input type="hidden" name="id" value="@Model.ProductId" />
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">@Model.Name</h3>
+                        <p class="card-text">@Model.Description</p>
+                        <p class="card-text">Rs. <strong>@Model.Unit</strong></p>
+
+                        <div class="form-group">
+                            <label for="qty">Quantity:</label>
+                            <input type="number" id="qty" name="qty" class="form-control" min="1" max="10" value="1"/>
+                        </div>
+                        <button type="submit" class="btn btn-warning">Add to Cart</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+        </div>

@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Male_Fashion Template">
+    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Male-Fashion</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/elegant-icons.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/magnific-popup.css" rel="stylesheet" />
+    <link href="~/Content/css/nice-select.css" rel="stylesheet" />
+    <link href="~/Content/css/owl.carousel.min.css" rel="stylesheet" />
+    <link href="~/Content/css/slicknav.min.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+ 
+
+</head>
+<body>
+
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__option">
+            <div class="offcanvas__links">
+                <a href="@Url.Action("Register", "Account")">Sign in</a>
+                <a href="#">FAQs</a>
+            </div>
+            <div class="offcanvas__top__hover">
+                <span>Usd <i class="arrow_carrot-down"></i></span>
+                <ul>
+                    <li>USD</li>
+                    <li>EUR</li>
+                    <li>USD</li>
+                </ul>
+            </div>
+        </div>
+        <div class="offcanvas__nav__option">
+            <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
+            <a href="#"><img src="img/icon/heart.png" alt=""></a>
+            <a href="#"><img src="img/icon/cart.png" alt=""> <span>0</span></a>
+            <div class="price">$0.00</div>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__text">
+            <p>Free shipping, 30-day return or refund guarantee.</p>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+    <!-- Header Section Begin -->
+    <header class="header">
+       <div class="header__top">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-7">
+                <div class="header__top__left">
+                    <p>Free shipping, 30-day return or refund guarantee.</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-5">
+                <div class="header__top__right d-flex justify-content-end">
+                    <div class="header__top__links mr-3">
+                        <a href="@Url.Action("Register", "Account")" class="mr-3">Sign in</a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <div class="header__logo">
+                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-10">
+                    <nav class="header__menu mobile-menu">
+
+
+
+                        <ul>
+                            @if (!User.Identity.IsAuthenticated)
+                            {
+
+                                <li class="nav-item "><a href="@Url.Action("Index","Home")" class="nav-link">Home</a></li>
+                                <li class="nav-item active"><a href="@Url.Action("AllProduct","Products")" class="nav-link">Product</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Login","Account")" class="nav-link">Login</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Register", "Account")" class="nav-link">Register</a></li>
+                                <li class="nav-item"><a href="@Url.Action("Register", "Account")" class="nav-link"><img src="~/img/icon/cart.png" /></a></li>
+                                if (TempData["cart"] != null)
+                                {
+                                    TempData.Keep();
+                                    <li class="nav-item cta cta-colored"><a href="@Url.Action("Checkout","Home")" class="nav-link"><img src="~/img/icon/cart.png" /> [@TempData["item_count"]]
+</a></li>
+                                }
+
+                            } 
+                            @if (User.Identity.IsAuthenticated)
+                            {
+
+                                if (User.IsInRole("1"))
+                                {
+                                    <li class="nav-item active"><a href="@Url.Action("Index","Home")" class="nav-link">Home</a></li>
+
+                                    <li class="nav-item "><span class="nav-link">Welcome to @Session["User"]</span></li>
+
+
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "Products")">Categories</a>
+                                        <ul class="dropdown">
+                                            <li><a href="@Url.Action("Create", "Category")">Add Category</a></li>
+                                            <li><a href="@Url.Action("Index", "Category")">View Categories</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", "Products")">Products</a>
+                                        <ul class="dropdown">
+                                            <li><a href="@Url.Action("Create", "Products")">Add Product</a></li>
+                                            <li><a href="@Url.Action("Index", "Products")">View Products</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item"><a href="@Url.Action("GetAllUser", "Home")" class="nav-link">Users</a></li>
+                                    <li class="nav-item"><a href="@Url.Action("GetAllOrderDetail", "Home")" class="nav-link">Orders</a></li>
+                                    <li class="nav-item"><a href="@Url.Action("Signout","Account")" class="nav-link">Logout</a></li>
+                                }
+                                if (User.IsInRole("2"))
+                                {
+                                    <li class="nav-item "><a href="@Url.Action("Index","Home")" class="nav-link">Home</a></li>
+                                    <li class="nav-item active"><a href="@Url.Action("AllProduct","Products")" class="nav-link">Product</a></li>
+                                    <li class="nav-item "><span class="nav-link">Welcome to @Session["User"]</span></li>
+                                    <li class="nav-item"><a href="@Url.Action("OrderDetail", "Home", new { id = @Session["uid"] })" class="nav-link">Orders</a></li>
+                                    if (TempData["cart"] != null)
+                                    {
+                                        TempData.Keep();
+                                        <li class="nav-item cta cta-colored"><a href="@Url.Action("Checkout","Home")" class="nav-link"><span class="icon-shopping_cart"></span>[@TempData["item_count"]]</a></li>
+
+                                    }
+
+                                    <li class="nav-item"><a href="@Url.Action("Signout","Account")" class="nav-link">Logout</a></li>
+                                }
+                            }
+                        </ul>
+
+
+
+                    </nav>
+                </div>
+
+            </div>
+            <div class="canvas__open"><i class="fa fa-bars"></i></div>
+        </div>
+    </header>
+
+    <style>
+        .nav-item {
+            margin-right: 12px !important; /* Reduce gap */
+            padding: 0 !important; /* Adjust padding */
+        }
+
+        .nav-link {
+            padding: 0px !important; /* Adjust padding */
+        }
+    </style>
+
+    <!-- Header Section End -->
+    <!-- menu start -->
+
+
+    @RenderBody()
+
+    @RenderSection("scripts", required: false)
+
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer__about">
+                        <div class="footer__logo">
+                            <a href="#"><img src="~/img/footer-logo.png" alt=""></a>
+                        </div>
+                        <p>The customer is at the heart of our unique business model, which includes design.</p>
+                        <a href="#"><img src="~/img/payment.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>Shopping</h6>
+                        <ul>
+                            <li><a href="#">Clothing Store</a></li>
+                            <li><a href="#">Trending Shoes</a></li>
+                            <li><a href="#">Accessories</a></li>
+                            <li><a href="#">Sale</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>Shopping</h6>
+                        <ul>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Payment Methods</a></li>
+                            <li><a href="#">Delivary</a></li>
+                            <li><a href="#">Return & Exchanges</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
+                    <div class="footer__widget">
+                        <h6>NewLetter</h6>
+                        <div class="footer__newslatter">
+                            <p>Be the first to know about new arrivals, look books, sales & promos!</p>
+                            <form action="#">
+                                <input type="text" placeholder="Your email">
+                                <button type="submit"><span class="icon_mail_alt"></span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="footer__copyright__text">
+                        <p>
+                            Copyright ©
+                            <script>
+                                document.write(new Date().getFullYear());
+                            </script>2020
+                            All rights reserved <i class="fa fa-heart-o"aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Male-Fashion</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+
+
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/js/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/js/jquery.countdown.min.js"></script>
+    <script src="~/Scripts/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Scripts/js/jquery.nice-select.min.js"></script>
+    <script src="~/Scripts/js/jquery.nicescroll.min.js"></script>
+    <script src="~/Scripts/js/jquery.slicknav.js"></script>
+    <script src="~/Scripts/js/main.js"></script>
+    <script src="~/Scripts/js/mixitup.min.js"></script>
+    <script src="~/Scripts/js/owl.carousel.min.js"></script>
+
+</body>
+</html>

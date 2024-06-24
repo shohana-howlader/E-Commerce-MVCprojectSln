@@ -1,0 +1,53 @@
+﻿@model MVCproject.Models.ViewModel.OrderUserVM
+
+@{
+    ViewBag.Title = "Order Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center">Order Details</h2>
+
+    <div class="card">
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                @Html.HiddenFor(model => model.InvoiceId)
+
+                <div class="form-group row">
+                    <label for="userName" class="col-sm-3 col-form-label">User Name:</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.Name, new { @class = "form-control", @readonly = "readonly", id = "userName" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="payment" class="col-sm-3 col-form-label">Payment:</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.Payment, new { @class = "form-control", @readonly = "readonly", id = "payment" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="bill" class="col-sm-3 col-form-label">Bill:</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.Bill, new { @class = "form-control", @readonly = "readonly", id = "bill" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="invoiceDate" class="col-sm-3 col-form-label">Invoice Date:</label>
+                    <div class="col-sm-9">
+                        @Html.DisplayFor(model => model.InvoiceDate, new { @class = "form-control", @readonly = "readonly", id = "invoiceDate" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-12 text-center">
+                        <input type="submit" value="Confirm Order" class="btn btn-success btn-lg" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
