@@ -12,12 +12,14 @@ Start the application server to make the platform accessible.
 
 Admin Guide
 Login as Admin
-Email: aa@gmail.cc
+Email: shohana@gmail.com
 Password: 123
-Admin Capabilities
+
+Admin Capabilities:
 Manage Categories and Products:
 Add, Edit, Create, and Delete Categories: Fully manage product categories.
 Add, Edit, Create, and Delete Products: Manage product listings, including adding new products, editing existing ones, and removing them as needed.
+
 View Records:
 Products: View a complete list of all products.
 Categories: View all product categories.
